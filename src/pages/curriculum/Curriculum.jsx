@@ -2,53 +2,53 @@ import { useEffect, useState } from "react";
 import { Navbar } from "../../components/ui/Navbar";
 import { Sidebar } from "../../components/ui/Sidebar";
 
-export function Curriculum() {
-  const userRole = localStorage.getItem("role");
+const Curriculum = () => {
+  // const userRole = localStorage.getItem("role");
 
-  const [curriculums, setCurriculums] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [programs, setPrograms] = useState([]);
-  const [courses, setCourses] = useState([]);
-  const [curriculumFilter, setCurriculumFilter] = useState("All");
-  const [yearFilter, setYearFilter] = useState("All");
-  const [semFilter, setSemFilter] = useState("All");
+  // const [curriculums, setCurriculums] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [programs, setPrograms] = useState([]);
+  // const [courses, setCourses] = useState([]);
+  // const [curriculumFilter, setCurriculumFilter] = useState("All");
+  // const [yearFilter, setYearFilter] = useState("All");
+  // const [semFilter, setSemFilter] = useState("All");
 
-  const [activeTab, setActiveTab] = useState(
-    userRole === "COACH" ? "Courses" : "List of Curriculum"
-  );
+  // const [activeTab, setActiveTab] = useState(
+  //   userRole === "COACH" ? "Courses" : "List of Curriculum"
+  // );
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
+  // const handleTabChange = (tab) => {
+  //   setActiveTab(tab);
+  // };
 
-  const fetchCurriculums = async () => {
-    try {
-      const response = await axios.get(`${PORT}/curriculums`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      });
-      setCurriculums(response.data);
-    } catch (error) {
-      console.error("Error fetching curriculums:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchCurriculums = async () => {
+  //   try {
+  //     const response = await axios.get(`${PORT}/curriculums`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+  //       },
+  //     });
+  //     setCurriculums(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching curriculums:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const fetchCourses = async () => {
-    try {
-      const response = await axios.get(`${PORT}/courses`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      });
-      setCourses(response.data);
-    } catch (error) {
-      console.error("Error fetching courses:", error);
-    }
-  };
+  // const fetchCourses = async () => {
+  //   try {
+  //     const response = await axios.get(`${PORT}/courses`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+  //       },
+  //     });
+  //     setCourses(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching courses:", error);
+  //   }
+  // };
 
   //   const fetchPrograms = async () => {
   //     try {
@@ -199,7 +199,7 @@ export function Curriculum() {
           <div className="card bg-white w-full shadow-xl">
             <div className="card-body">
               <div className="tabs mb-4">
-                {userRole !== "COACH" && (
+                {/* {userRole !== "COACH" && (
                   <a
                     className={`tab tab-bordered ${
                       activeTab === "List of Curriculum" ? "tab-active" : ""
@@ -208,18 +208,18 @@ export function Curriculum() {
                   >
                     List of Curriculum
                   </a>
-                )}
+                )} */}
                 <a
-                  className={`tab tab-bordered ${
-                    activeTab === "Courses" ? "tab-active" : ""
-                  }`}
-                  onClick={() => handleTabChange("Courses")}
+                // className={`tab tab-bordered ${
+                //   activeTab === "Courses" ? "tab-active" : ""
+                // }`}
+                // onClick={() => handleTabChange("Courses")}
                 >
                   Courses
                 </a>
               </div>
 
-              {activeTab === "List of Curriculum" && (
+              {/* {activeTab === "List of Curriculum" && (
                 <div>
                   <div className="overflow-x-auto">
                     <table className="table w-full">
@@ -233,7 +233,7 @@ export function Curriculum() {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* {curriculums.map((curriculum) => (
+                        {curriculums.map((curriculum) => (
                           <tr key={curriculum.id}>
                             <td>{curriculum.code}</td>
                             <td>{curriculum.rev}</td>
@@ -250,7 +250,7 @@ export function Curriculum() {
                               </button>
                             </td>
                           </tr>
-                        ))} */}
+                        ))}
                       </tbody>
                     </table>
                   </div>
@@ -258,15 +258,15 @@ export function Curriculum() {
                   <div className="mt-4">
                     <button
                       className="btn btn-outline"
-                      //   onClick={() => setIsModalOpen(true)}
+                        onClick={() => setIsModalOpen(true)}
                     >
                       Add Curriculum
                     </button>
                   </div>
                 </div>
-              )}
+              )} */}
 
-              {activeTab === "Courses" && (
+              {/* {activeTab === "Courses" && (
                 <div>
                   <div className="flex items-center justify-between">
                     <div className="flex gap-4 mb-4">
@@ -338,7 +338,7 @@ export function Curriculum() {
                     </table>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
@@ -523,4 +523,6 @@ export function Curriculum() {
       )} */}
     </div>
   );
-}
+};
+
+export default Curriculum;
